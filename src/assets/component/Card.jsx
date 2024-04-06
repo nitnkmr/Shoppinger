@@ -1,7 +1,7 @@
 import img from "../Images/burger.jpg"
 const Card = () => {
   return (
-    <section className="text-gray-300 body-font border max-w-3xl m-auto">
+    <section className="text-gray-300 body-font border max-w-3xl m-auto mt-4 rounded-lg" >
   <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
     <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0 border">
       <img className="object-cover object-center rounded" alt="hero" src={img}/>
