@@ -1,15 +1,12 @@
+/* eslint-disable react/prop-types */
 
 import Card from './Card'
-const Cart = () => {
+const Cart = ({cartdata,setCartData}) => {
+
   return (
-    <>
-
-    <Card/>
-
-
-    <Card/>
-
-    </>
+    <div>
+     {cartdata.length > 0 ? cartdata.map((ele,i)=><Card key={i} ele={ele}/>): <h1>Cart is empty</h1> } 
+    </div>
   )
 }
 

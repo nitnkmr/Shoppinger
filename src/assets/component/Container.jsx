@@ -1,166 +1,22 @@
+/* eslint-disable react/prop-types */
+import { useEffect} from "react"
 import Maincards from "./Maincards"
 
 
-const Container = () => {
+const Container = ({cartdata,setCartData, data}) => {
+  
+    useEffect(()=>{
+        console.log(cartdata);
+        
+    },[cartdata])
     return (
         <div className='container border m-auto rounded-lg'>
             <div className="allProduct">
                 <h1 className="text-center py-2 font-bold">All Products</h1>
                 <section className="text-gray-300 body-font">
-                    <div className="container px-5 py-24 mx-auto">
+                    <div className="container px-5 py-8 mx-auto">
                         <div className="flex flex-wrap -m-4">
-                            <Maincards/>
-
-                            <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-                                <a className="block relative h-48 rounded overflow-hidden">
-                                    <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/421x261" />
-                                </a>
-                                <div className="mt-0  rounded-lg bg-slate-300/10 p-3">
-                                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                    <h2 className="text-gray-900 title-font text-lg font-medium">Shooting Stars</h2>
-                                    <p className="mt-1">$21.15</p>
-                                </div>
-                            </div>
-                            <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-                                <a className="block relative h-48 rounded overflow-hidden">
-                                    <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/422x262" />
-                                </a>
-                                <div className="mt-4">
-                                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                    <h2 className="text-gray-900 title-font text-lg font-medium">Neptune</h2>
-                                    <p className="mt-1">$12.00</p>
-                                </div>
-                            </div>
-                            <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-                                <a className="block relative h-48 rounded overflow-hidden">
-                                    <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/423x263" />
-                                </a>
-                                <div className="mt-4">
-                                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                    <h2 className="text-gray-900 title-font text-lg font-medium">The 400 Blows</h2>
-                                    <p className="mt-1">$18.40</p>
-                                </div>
-                            </div>
-                            <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-                                <a className="block relative h-48 rounded overflow-hidden">
-                                    <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/424x264" />
-                                </a>
-                                <div className="mt-4">
-                                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                    <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                                    <p className="mt-1">$16.00</p>
-                                </div>
-                            </div>
-                            <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-                                <a className="block relative h-48 rounded overflow-hidden">
-                                    <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/425x265" />
-                                </a>
-                                <div className="mt-4">
-                                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                    <h2 className="text-gray-900 title-font text-lg font-medium">Shooting Stars</h2>
-                                    <p className="mt-1">$21.15</p>
-                                </div>
-                            </div>
-                            <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-                                <a className="block relative h-48 rounded overflow-hidden">
-                                    <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/427x267" />
-                                </a>
-                                <div className="mt-4">
-                                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                    <h2 className="text-gray-900 title-font text-lg font-medium">Neptune</h2>
-                                    <p className="mt-1">$12.00</p>
-                                </div>
-                            </div>
-                            <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-                                <a className="block relative h-48 rounded overflow-hidden">
-                                    <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/428x268" />
-                                </a>
-                                <div className="mt-4">
-                                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                    <h2 className="text-gray-900 title-font text-lg font-medium">The 400 Blows</h2>
-                                    <p className="mt-1">$18.40</p>
-                                </div>
-                            </div>
-                            <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-                                <a className="block relative h-48 rounded overflow-hidden">
-                                    <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/428x268" />
-                                </a>
-                                <div className="mt-4">
-                                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                    <h2 className="text-gray-900 title-font text-lg font-medium">The 400 Blows</h2>
-                                    <p className="mt-1">$18.40</p>
-                                </div>
-                            </div>
-                            <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-                                <a className="block relative h-48 rounded overflow-hidden">
-                                    <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/428x268" />
-                                </a>
-                                <div className="mt-4">
-                                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                    <h2 className="text-gray-900 title-font text-lg font-medium">The 400 Blows</h2>
-                                    <p className="mt-1">$18.40</p>
-                                </div>
-                            </div>
-                            <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-                                <a className="block relative h-48 rounded overflow-hidden">
-                                    <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/428x268" />
-                                </a>
-                                <div className="mt-4">
-                                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                    <h2 className="text-gray-900 title-font text-lg font-medium">The 400 Blows</h2>
-                                    <p className="mt-1">$18.40</p>
-                                </div>
-                            </div>
-                            <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-                                <a className="block relative h-48 rounded overflow-hidden">
-                                    <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/428x268" />
-                                </a>
-                                <div className="mt-4">
-                                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                    <h2 className="text-gray-900 title-font text-lg font-medium">The 400 Blows</h2>
-                                    <p className="mt-1">$18.40</p>
-                                </div>
-                            </div>
-                            <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-                                <a className="block relative h-48 rounded overflow-hidden">
-                                    <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/428x268" />
-                                </a>
-                                <div className="mt-4">
-                                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                    <h2 className="text-gray-900 title-font text-lg font-medium">The 400 Blows</h2>
-                                    <p className="mt-1">$18.40</p>
-                                </div>
-                            </div>
-                            <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-                                <a className="block relative h-48 rounded overflow-hidden">
-                                    <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/428x268" />
-                                </a>
-                                <div className="mt-4">
-                                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                    <h2 className="text-gray-900 title-font text-lg font-medium">The 400 Blows</h2>
-                                    <p className="mt-1">$18.40</p>
-                                </div>
-                            </div>
-                            <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-                                <a className="block relative h-48 rounded overflow-hidden">
-                                    <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/428x268" />
-                                </a>
-                                <div className="mt-4">
-                                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                    <h2 className="text-gray-900 title-font text-lg font-medium">The 400 Blows</h2>
-                                    <p className="mt-1">$18.40</p>
-                                </div>
-                            </div>
-                            <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-                                <a className="block relative h-48 rounded overflow-hidden">
-                                    <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/428x268" />
-                                </a>
-                                <div className="mt-4">
-                                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                    <h2 className="text-gray-900 title-font text-lg font-medium">The 400 Blows</h2>
-                                    <p className="mt-1">$18.40</p>
-                                </div>
-                            </div>
+                            {data.map((e)=><Maincards key={e.id} id={e.id} image={e.image} price={e.price} title={e.title} category={e.category} setCartData={setCartData} data={data} cartdata={cartdata} />)}
                         </div>
                     </div>
                 </section>

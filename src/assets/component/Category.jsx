@@ -1,6 +1,6 @@
 import Maincards from "./Maincards"
 import {HashLink as HashLink} from "react-router-hash-link"
-const Category = () => {
+const Category = ({cartdata,setCartData, data}) => {
   return (<>
 <div className="flex justify-center max-w-120 align-middle flex-col sm:flex-row sm:w-full sticky top-3 z-10">
 <HashLink to="#men" smooth><button className="border w-48 bg-red-500">Men </button></HashLink>

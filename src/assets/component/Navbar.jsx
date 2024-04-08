@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { BsCartCheck } from "react-icons/bs";
 import { FaBagShopping } from "react-icons/fa6";
 
-const Navbar = () => {
+const Navbar = ({length}) => {
   return (
     <nav className="flex flex-col md:flex-row justify-between bg-slate-400/25 m-5 rounded-md p-3">
     <div className="logo flex font-bold justify-center m-auto md:m-1 border p-2 rounded-lg">Shop<span className="text-red-500 flex items-center">inger<FaBagShopping /></span></div>
@@ -13,7 +13,7 @@ const Navbar = () => {
         <li className="m-1 md:m-2 hover:text-red-500 hover:font-bold"><Link to="/">Home</Link></li>
         <li className="m-1 md:m-2 hover:text-red-500 hover:font-bold"><Link to="/Category">Category</Link></li>
         <li className="m-1 md:m-2 hover:text-red-500 hover:font-bold"><Link to="About">About</Link></li>
-        <li className="m-1 md:m-2 hover:text-red-500 hover:font-bold"><Link to="Cart"><button className="px-2 py-1 bg-red-500 text-white font-bold rounded"><BsCartCheck /></button></Link></li>
+        <li className="m-1 md:m-2 hover:text-red-500 hover:font-bold"><Link to="Cart"><button className="px-2 py-2 bg-red-500 text-white font-bold rounded"><BsCartCheck /></button> <span className='border text-xs  min-h-5 min-w-5 text-center fixed top-9 right-8 bg-blue-800 rounded-full'>{length}</span> </Link></li>
 
     </ul>
 </nav>
