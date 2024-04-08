@@ -7,9 +7,6 @@ const Category = ({cartdata,setCartData, data}) => {
 <HashLink to="#women" smooth><button className="border w-48 bg-red-500">Women </button></HashLink>
 <HashLink to="#electronics" smooth><button className="border w-48 bg-red-500">Electronics </button></HashLink>
 <HashLink to="#jwellery" smooth><button className="border w-48 bg-red-500">Jwellery </button></HashLink>
-
-
-
 </div>
     <div className='container border m-auto rounded-lg mt-3'>
             <div className="allProduct">
@@ -17,10 +14,7 @@ const Category = ({cartdata,setCartData, data}) => {
                 <section className="text-gray-300 body-font">
                     <div className="container px-5 py-24 mx-auto">
                         <div className="flex flex-wrap -m-4">
-                            <Maincards/>
-                            <Maincards/>
-                            <Maincards/>
-                            <Maincards/>
+                        {data.map((e)=><Maincards key={e.id} id={e.id} image={e.image} price={e.price} title={e.title} category={e.category} setCartData={setCartData} data={data} cartdata={cartdata} />)}
                         </div>
                     </div>
                 </section>
