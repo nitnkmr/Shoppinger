@@ -16,15 +16,15 @@ const Card = ({ ele, setCartData,cartdata}) => {
 
   return (
 
-    <section className="text-gray-300 body-font bg-slate-300/10 max-w-[1500px]  m-auto mx-5 mt-5 rounded-lg" >
+    <section className="text-black body-font bg-white shadow-md max-w-[1500px]  m-auto mx-5 mt-5 rounded-lg" >
       <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0 border">
           <img className="object-cover object-center rounded" alt="hero" src={ele.image} />
         </div>
         <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-          <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-100">{ele.title}
+          <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium  text-black">{ele.title}
           </h1>
-          <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-100">${ele.price}
+          <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium  text-black">${ele.price}
           </h1>
           <p className="mb-8 leading-relaxed">{ele.description}</p>
           <div className="flex justify-between align-middle  w-48 h-18 text-white font-bold">
