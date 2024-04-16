@@ -11,13 +11,13 @@ export default function App() {
 
      const [cartdata,setCartData]=useState([]);
      const [data,setdata]=useState([]);
-     const [toastMassage,setToastMassage]=useState(false);
+     const [toastMassage,setToastMassage]=useState(true);
 
      const toastHider = ()=>{
-       setToastMassage(true)
+       setToastMassage(false)
       setTimeout(()=>{
-        setToastMassage(false)
-      },600)
+        setToastMassage(true)
+      },1000)
      }
 
 
@@ -33,15 +33,16 @@ export default function App() {
   return (
     <>
       <CartDataContaxt.Provider value={{cartdata,setCartData,data,toastHider}}>
-      <div className="min-h-screen bg-gradient-to-l from-slate-200 bg-slate-200 bg-cover w-full backdrop-blur-sm border text-white mx-0">
+      <div className="min-h-screen bg-gradient-to-l from-slate-200 bg-slate-200 bg-cover w-full relative backdrop-blur-sm border text-white mx-0">
         <Navbar  length = {cartdata.length}/>
-         {toastMassage && <ToastMassage/>}
+        {toastMassage ? <div className='px-3 p-2 w-80 h-10 sticky z-30 left-1 top-[95vh]'></div> : <ToastMassage/>  }
         <Routes>
           <Route path="/" element={<Container/>}></Route>
           <Route path="Cart" element={<Cart/>} />
           <Route path="Category" element={<Buynow setCartData={setCartData} cartdata={cartdata} data={data} />} />
           <Route path="About" element={<About/>} />
         </Routes>
+        
       </div>
       </CartDataContaxt.Provider>
     </>

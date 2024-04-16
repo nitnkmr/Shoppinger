@@ -14,7 +14,7 @@ const Container = () => {
                     <button className="border w-48 bg-blue-500">Electronics </button>
                     <button className="border w-48 bg-blue-500">Jwellery </button>
                 </div>
-        <div className='container shadow-lg m-auto rounded-lg'>
+        <div className='container shadow-lg m-auto rounded-lg text-black'>
             <div className="allProduct">
                 <h1 className="text-center py-2 font-bold">All Products</h1>
                 <section className="text-gray-300 body-font">

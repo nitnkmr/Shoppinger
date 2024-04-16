@@ -18,7 +18,7 @@ const {cartdata,setCartData} = useContext(CartDataContaxt)
                 out</button>
         </div>
     </div>
-     {cartdata.length > 0 ? cartdata.map((ele,i)=><Card key={i} ele={ele} setCartData={setCartData} cartdata={cartdata}/>): <h1>Cart is empty</h1> } 
+     {cartdata.length > 0 ? cartdata.map((ele,i)=><Card key={i} index={i} ele={ele} setCartData={setCartData} cartdata={cartdata}/>): <h1>Cart is empty</h1> } 
     </>
   )
 }
