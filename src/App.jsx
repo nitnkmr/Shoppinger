@@ -18,7 +18,7 @@ export default function App() {
        setToastMassage(false)
       setTimeout(()=>{
         setToastMassage(true)
-      },1000)
+      },500)
      }
 
 
