@@ -11,6 +11,7 @@ export default function App() {
 
      const [cartdata,setCartData]=useState([]);
      const [data,setdata]=useState([]);
+     const [category,setCategory]=useState("");
      const [toastMassage,setToastMassage]=useState(true);
 
      const toastHider = ()=>{
@@ -23,16 +24,24 @@ export default function App() {
 
      useEffect(()=>{
       async function getdata(){
-         let res = await fetch('https://fakestoreapi.com/products');
+         let res = await fetch(`https://fakestoreapi.com/products${category}`);
          let data1 =await res.json()
          console.log(data1);
          setdata(data1)
       }
       getdata();
-  },[])
+  },[category])
+  const handleCategory =(str)=>{
+    if(str==="all"){
+      setCategory("")   
+    }else{
+      setCategory("//category/"+str)
+    }
+    console.log(category)
+  }
   return (
     <>
-      <CartDataContaxt.Provider value={{cartdata,setCartData,data,toastHider}}>
+      <CartDataContaxt.Provider value={{cartdata,setCartData,data,toastHider,handleCategory}}>
       <div className="min-h-screen bg-gradient-to-l from-slate-200 bg-slate-200 bg-cover w-full relative backdrop-blur-sm border text-white mx-0">
         <Navbar  length = {cartdata.length}/>
         {toastMassage ? <div className='px-3 p-2 w-80 h-10 sticky z-30 left-1 top-[95vh]'></div> : <ToastMassage/>  }

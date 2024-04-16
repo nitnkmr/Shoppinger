@@ -5,14 +5,15 @@ import { CartDataContaxt } from "../contaxts/CartData"
 
 
 const Container = () => {
-    const { cartdata, setCartData, data } = useContext(CartDataContaxt)
+    const { cartdata, setCartData, data ,handleCategory} = useContext(CartDataContaxt)
 
     return (
                <> <div className="flex justify-center max-w-120 align-middle flex-col mb-3 sm:flex-row sm:w-full sticky top-3 z-10">
-                    <button className="border w-48 bg-blue-500 p-1">Men </button>
-                    <button className="border w-48 bg-blue-500">Women </button>
-                    <button className="border w-48 bg-blue-500">Electronics </button>
-                    <button className="border w-48 bg-blue-500">Jwellery </button>
+                    <button className="border w-48 bg-blue-500 p-1" onClick={()=>handleCategory("all")}>All </button>
+                    <button className="border w-48 bg-blue-500 p-1" onClick={()=>handleCategory("men's clothing")}>Men </button>
+                    <button className="border w-48 bg-blue-500" onClick={()=>handleCategory("women's clothing")}>Women </button>
+                    <button className="border w-48 bg-blue-500" onClick={()=>handleCategory("electronics")}>Electronics </button>
+                    <button className="border w-48 bg-blue-500" onClick={()=>handleCategory("jewelery")}>Jwellery </button>
                 </div>
         <div className='container shadow-lg m-auto rounded-lg text-black'>
             <div className="allProduct">
