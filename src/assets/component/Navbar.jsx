@@ -13,6 +13,7 @@ const Navbar = ({length}) => {
         <li className="m-1 md:m-2 hover:text-red-500 hover:font-bold"><Link to="/">Home</Link></li>
         {/* <li className="m-1 md:m-2 hover:text-red-500 hover:font-bold"><Link to="/Category">Category</Link></li> */}
         <li className="m-1 md:m-2 hover:text-red-500 hover:font-bold"><Link to="About">About</Link></li>
+        <li className="m-1 md:m-2 hover:text-red-500 hover:font-bold"><Link to="account">Account</Link></li>
         <li className="m-1 md:m-2 hover:text-red-500 hover:font-bold"><Link to="Cart"><button className="px-2 py-2 bg-red-500 text-white font-bold rounded"><BsCartCheck /></button> <span className='border text-xs  min-h-5 min-w-5 text-center fixed top-[150px] right-[82px] bg-blue-800 rounded-full md:top-16 md:right-7'>{length}</span> </Link></li>
     </ul>
 </nav>

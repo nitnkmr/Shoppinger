@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from 'react'
 import { CartDataContaxt } from '../contaxts/CartData'
 
 import Card from './Card'
+import { Link } from 'react-router-dom'
 const Cart = () => {
 const {cartdata,setCartData} = useContext(CartDataContaxt)
 const [sumOfItem,setSumOfItem]= useState(0)
@@ -15,7 +16,7 @@ useEffect(()=>{
   setSumOfItem(sum)
 },[cartdata])
   return (
-    <>
+    <div>
     <div className='flex  text-black'>
            <div className="bg-white w-full rounded p-6 m-5 px-16 mb-3 right-2">
             <h3 className="text-xl font-extrabold  border-b pb-4">Order Summary (Items : )</h3>
@@ -26,8 +27,12 @@ useEffect(()=>{
                 out</button>
         </div>
     </div>
-     {cartdata.length > 0 ? cartdata.map((ele,i)=><Card key={i} index={i} ele={ele} setCartData={setCartData} cartdata={cartdata} setSumOfItem={setSumOfItem}/>): <h1>Cart is empty</h1> } 
-    </>
+     {cartdata.length > 0 ? cartdata.map((ele,i)=><Card key={i} index={i} ele={ele} setCartData={setCartData} cartdata={cartdata} setSumOfItem={setSumOfItem}/>): <div className=
+     "rounded p-6 m-5 px-16 mb-3 right-2">
+      <div className='text-black text-4xl text-center'>Cart is empty</div>
+      <div className='text-2xl my-7 text-center text-blue-700 underline'><Link to="/">Go to Homepage</Link></div>
+     </div> } 
+    </div>
   )
 }
 

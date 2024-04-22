@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 import Buynow from "./assets/component/Buynow";
 import { CartDataContaxt } from "./assets/contaxts/CartData";
 import ToastMassage from "./assets/component/ToastMassage";
+import Login from "./assets/component/Login";
+import Signup from "./assets/component/Signup";
 export default function App() {
 
      const [cartdata,setCartData]=useState([]);
@@ -49,7 +51,8 @@ export default function App() {
           <Route path="/" element={<Container/>}></Route>
           <Route path="Cart" element={<Cart/>} />
           <Route path="Category" element={<Buynow setCartData={setCartData} cartdata={cartdata} data={data} />} />
-          <Route path="About" element={<About/>} />
+          <Route path="About" element={<Login/>} />
+          <Route path="account" element={<Signup/>} />
         </Routes>
         
       </div>
