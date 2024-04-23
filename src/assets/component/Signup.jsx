@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import { CartDataContaxt } from '../contaxts/CartData'
 
 const Signup = () => {
-  return (
+    const [userData, setUserData] = useState({})
+    console.log(userData)
+   const {signUp, setSignUp} = useContext(CartDataContaxt)
+
+   function handleSignup(){
+    if(signUp){
+        setSignUp([...signUp,userData])
+    }else{
+        setSignUp(userData)
+
+    }
+    console.log(signUp);
+    setUserData({})
+   }
+
+    return (
     <>
       <div className=" text-black flex justify-center">
         <div className="container border shadow-lg rounded-md w-full md:w-1/2 sm:w-1/2 ">
@@ -12,16 +28,18 @@ const Signup = () => {
             <label htmlFor="text">First Name</label>
             <input
               type="text"
-              name="text"
+              name="fname"
               id="fname"
               className="p-2  my-2 rounded border border-blue-600"
+              onChange={(e) => setUserData({...userData,[e.target.name]:e.target.value})}
             />
             <label htmlFor="text">Last Name</label>
             <input
               type="text"
-              name="text"
+              name="lname"
               id="lname"
               className="p-2  my-2 rounded border border-blue-600"
+              onChange={(e) => setUserData({...userData,[e.target.name]:e.target.value})}
             />
             <label htmlFor="email">Email</label>
             <input
@@ -29,6 +47,7 @@ const Signup = () => {
               name="email"
               id="email"
               className="p-2  my-2 rounded border border-blue-600"
+              onChange={(e) => setUserData({...userData,[e.target.name]:e.target.value})}
             />
             <label htmlFor="password">Password</label>
             <input
@@ -36,8 +55,17 @@ const Signup = () => {
               name="password"
               id="password"
               className="p-2  my-2 rounded border border-blue-600"
+              onChange={(e) => setUserData({...userData,[e.target.name]:e.target.value})}
             />
-            <div className="button flex justify-around">
+            <label htmlFor="password">Confirm Password</label>
+            <input
+              type="password"
+              name="cpassword"
+              id="cpassword"
+              className="p-2  my-2 rounded border border-blue-600"
+              onChange={(e) => setUserData({...userData,[e.target.name]:e.target.value})}
+            />
+            <div className="button flex justify-around" onClick={handleSignup}>
               <input
                 type="button"
                 value="Sign Up"

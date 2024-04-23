@@ -1,7 +1,17 @@
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { CartDataContaxt } from "../contaxts/CartData";
 
 
 function Login() {
+  const [userData,setUserData] = useState({})
+  const {login,setLogin,varifyUser,user} =useContext(CartDataContaxt)
 
+  const handleLogin =()=>{
+    setLogin(userData)
+    console.log(login);
+    varifyUser()
+  }
   return (
     <>
       <div className=" text-black flex justify-center">
@@ -16,6 +26,7 @@ function Login() {
               name="email"
               id="email"
               className="p-2  my-2 rounded border border-blue-600"
+              onChange={(e) => setUserData({...userData,[e.target.name]:e.target.value})}
             />
             <label htmlFor="password">Password</label>
             <input
@@ -23,19 +34,24 @@ function Login() {
               name="password"
               id="password"
               className="p-2  my-2 rounded border border-blue-600"
+              onChange={(e) => setUserData({...userData,[e.target.name]:e.target.value})}
             />
+            <span>{user !== false ? "user data present" : "userdata not present"}</span>
             <div className="button flex justify-around">
               <input
                 type="button"
                 value="Log in"
                 className="mt-6 text-md px-6 py-2.5 w-1/3 bg-blue-600 hover:bg-blue-700 text-white rounded"
+                onClick={handleLogin}
               />
 
-              <input
+             <Link to="../account" className="mt-6 text-md px-6 py-2.5 w-1/3 bg-blue-600 hover:bg-blue-700 shadow-2xl text-white rounded">
+             <input
                 type="button"
                 value="Sign Up"
-                className="mt-6 text-md px-6 py-2.5 w-1/3 bg-blue-600 hover:bg-blue-700 shadow-2xl text-white rounded"
+                className="w-full h-full"
               />
+             </Link>
             </div>
           </form>
         </div>
