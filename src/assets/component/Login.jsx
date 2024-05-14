@@ -10,7 +10,9 @@ function Login() {
   const handleLogin =()=>{
     setLogin(userData)
     console.log(login);
-    varifyUser()
+    console.log(user);
+
+    varifyUser();
   }
   return (
     <>
@@ -36,7 +38,7 @@ function Login() {
               className="p-2  my-2 rounded border border-blue-600"
               onChange={(e) => setUserData({...userData,[e.target.name]:e.target.value})}
             />
-            <span>{user !== false ? "user data present" : "userdata not present"}</span>
+            <span className="text-red-500">{user  ? "" : "**Invalid Credentials**"}</span>
             <div className="button flex justify-around">
               <input
                 type="button"

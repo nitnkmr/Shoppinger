@@ -8,7 +8,7 @@ const Container = () => {
     const { cartdata, setCartData, data ,handleCategory} = useContext(CartDataContaxt)
 
     return (
-               <> <div className="flex justify-center max-w-120 align-middle flex-col mb-3 sm:flex-row sm:w-full sticky top-3 z-10">
+               <> <div className="flex justify-center max-w-120 align-middle flex-row text-sm sm:text-lg mb-3 sm:w-full sticky top-3 z-10">
                     <button className="border w-48 bg-blue-500 p-1" onClick={()=>handleCategory("all")}>All </button>
                     <button className="border w-48 bg-blue-500 p-1" onClick={()=>handleCategory("men's clothing")}>Men </button>
                     <button className="border w-48 bg-blue-500" onClick={()=>handleCategory("women's clothing")}>Women </button>

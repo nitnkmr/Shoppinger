@@ -2,11 +2,11 @@ import Maincards from "./Maincards"
 import {HashLink as HashLink} from "react-router-hash-link"
 const Category = ({cartdata,setCartData, data}) => {
   return (<>
-<div className="flex justify-center max-w-120 align-middle flex-col sm:flex-row sm:w-full sticky top-3 z-10">
-<HashLink to="#men" smooth><button className="border w-48 bg-red-500">Men </button></HashLink>
-<HashLink to="#women" smooth><button className="border w-48 bg-red-500">Women </button></HashLink>
-<HashLink to="#electronics" smooth><button className="border w-48 bg-red-500">Electronics </button></HashLink>
-<HashLink to="#jwellery" smooth><button className="border w-48 bg-red-500">Jwellery </button></HashLink>
+<div className="flex justify-center max-w-120 align-middle  sm:w-full sticky top-3 z-10">
+<HashLink to="#men" smooth><button className="border max-w-48 bg-red-500">Men </button></HashLink>
+<HashLink to="#women" smooth><button className="border max-w-48 bg-red-500">Women </button></HashLink>
+<HashLink to="#electronics" smooth><button className="border max-w-48 bg-red-500">Electronics </button></HashLink>
+<HashLink to="#jwellery" smooth><button className="border max-w-48 bg-red-500">Jwellery </button></HashLink>
 </div>
     <div className='container border m-auto rounded-lg mt-3'>
             <div className="allProduct">

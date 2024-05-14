@@ -15,8 +15,10 @@ export default function App() {
      const [data,setdata]=useState([]);
      const [signUp,setSignUp]=useState([]);
      const [login,setLogin]=useState([]);
+     const [userData,setUserData]=useState({});
      const [category,setCategory]=useState("");
-     const [user,setUser]=useState();
+     const [user,setUser]=useState(true);
+     const [accesCart,setAccesCart]=useState(false);
      const [toastMassage,setToastMassage]=useState(true);
 
      const toastHider = ()=>{
@@ -46,28 +48,37 @@ export default function App() {
   }
 
   const varifyUser = ()=>{
+    console.log("varify called")
+    console.log(signUp)
+    if(signUp.length>0){
     signUp.map((e)=>{
       if(login.email === e.email && login.password === e.password){
         console.log("user variied")
         setUser(true)
+        setAccesCart(true)
+        setUserData({name: e.fname + " "+e.lname,email:e.email})
         return;
       }else{
+        setAccesCart(false)
         setUser(false);
       }
     
     })
+  }else{
+    setUser(false);
+  }
   }
   return (
     <>
-      <CartDataContaxt.Provider value={{cartdata,setCartData,data,toastHider,handleCategory,setSignUp,signUp,login,setLogin,varifyUser,user}}>
+      <CartDataContaxt.Provider value={{cartdata,accesCart,setCartData,data,toastHider,handleCategory,setSignUp,signUp,login,setLogin,varifyUser,user}}>
       <div className="min-h-screen bg-gradient-to-l from-slate-200 bg-slate-200 bg-cover w-full relative backdrop-blur-sm border text-white mx-0">
         <Navbar  length = {cartdata.length}/>
         {toastMassage ? <div className='px-3 p-2 w-80 h-10 sticky z-30 left-1 top-[95vh]'></div> : <ToastMassage/>  }
         <Routes>
           <Route path="/" element={<Container/>}></Route>
-          <Route path="Cart" element={user ? <Cart/> : <Login/>} />
+          <Route path="Cart" element={accesCart ? <Cart/> : <Login/>} />
           <Route path="Category" element={<Buynow setCartData={setCartData} cartdata={cartdata} data={data} />} />
-          <Route path="About" element={<Login/>} />
+          <Route path="About" element={<About/>} />
           <Route path="account" element={<Signup/>} />
         </Routes>
         

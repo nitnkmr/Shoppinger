@@ -1,12 +1,15 @@
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { CartDataContaxt } from '../contaxts/CartData'
+// import { useHistory } from 'react-router-dom';
 
 const Signup = () => {
+    // const history = useHistory();
     const [userData, setUserData] = useState({})
     console.log(userData)
    const {signUp, setSignUp} = useContext(CartDataContaxt)
 
-   function handleSignup(){
+   function handleSignup(e){
+    e.preventDefault();
     if(signUp){
         setSignUp([...signUp,userData])
     }else{
@@ -14,7 +17,7 @@ const Signup = () => {
 
     }
     console.log(signUp);
-    setUserData({})
+    history.push('/login')
    }
 
     return (
@@ -24,7 +27,7 @@ const Signup = () => {
           <h3 className="font-extrabold m-5 text-center text-4xl">
             Create Your Account
           </h3>
-          <form action="" className="flex flex-col p-6">
+          <form action="" className="flex flex-col p-6" onSubmit={handleSignup}>
             <label htmlFor="text">First Name</label>
             <input
               type="text"
@@ -32,6 +35,7 @@ const Signup = () => {
               id="fname"
               className="p-2  my-2 rounded border border-blue-600"
               onChange={(e) => setUserData({...userData,[e.target.name]:e.target.value})}
+              required
             />
             <label htmlFor="text">Last Name</label>
             <input
@@ -40,6 +44,7 @@ const Signup = () => {
               id="lname"
               className="p-2  my-2 rounded border border-blue-600"
               onChange={(e) => setUserData({...userData,[e.target.name]:e.target.value})}
+              required
             />
             <label htmlFor="email">Email</label>
             <input
@@ -48,6 +53,7 @@ const Signup = () => {
               id="email"
               className="p-2  my-2 rounded border border-blue-600"
               onChange={(e) => setUserData({...userData,[e.target.name]:e.target.value})}
+              required
             />
             <label htmlFor="password">Password</label>
             <input
@@ -56,6 +62,7 @@ const Signup = () => {
               id="password"
               className="p-2  my-2 rounded border border-blue-600"
               onChange={(e) => setUserData({...userData,[e.target.name]:e.target.value})}
+              required
             />
             <label htmlFor="password">Confirm Password</label>
             <input
@@ -64,10 +71,11 @@ const Signup = () => {
               id="cpassword"
               className="p-2  my-2 rounded border border-blue-600"
               onChange={(e) => setUserData({...userData,[e.target.name]:e.target.value})}
+              required
             />
-            <div className="button flex justify-around" onClick={handleSignup}>
+            <div className="button flex justify-around" >
               <input
-                type="button"
+                type="submit"
                 value="Sign Up"
                 className="mt-6 text-md px-6 py-2.5 w-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded"
               />
