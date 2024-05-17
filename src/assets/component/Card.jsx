@@ -43,7 +43,7 @@ const Card = ({ ele, setCartData,cartdata, index, setSumOfItem}) => {
     <section className="text-black body-font bg-white shadow-md max-w-[1500px]  m-auto mx-5 mt-5 rounded-lg" >
       <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0 border">
-          <img className="object-cover object-center rounded" alt="hero" src={ele.data.image} />
+          <img className="object-cover object-center rounded" alt="hero" src={ele.data.thumbnail} />
         </div>
         <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
           <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium  text-black">{ele.data.title}

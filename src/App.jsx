@@ -9,81 +9,121 @@ import { CartDataContaxt } from "./assets/contaxts/CartData";
 import ToastMassage from "./assets/component/ToastMassage";
 import Login from "./assets/component/Login";
 import Signup from "./assets/component/Signup";
+import PrivateRoutes from "./assets/component/PrivateRoutes";
+import UserCard from "./assets/component/UserCard";
 export default function App() {
+  const [cartdata, setCartData] = useState([]);
+  const [data, setdata] = useState([]);
+  const [signUp, setSignUp] = useState([]);
+  const [login, setLogin] = useState([]);
+  const [userData, setUserData] = useState({});
+  const [category, setCategory] = useState("");
+  const [user, setUser] = useState(true);
+  const [toastMassage, setToastMassage] = useState(true);
+  const [search, setSearch] = useState("")
 
-     const [cartdata,setCartData]=useState([]);
-     const [data,setdata]=useState([]);
-     const [signUp,setSignUp]=useState([]);
-     const [login,setLogin]=useState([]);
-     const [userData,setUserData]=useState({});
-     const [category,setCategory]=useState("");
-     const [user,setUser]=useState(true);
-     const [accesCart,setAccesCart]=useState(false);
-     const [toastMassage,setToastMassage]=useState(true);
+  const toastHider = () => {
+    setToastMassage(false);
+    setTimeout(() => {
+      setToastMassage(true);
+    }, 500);
+  };
 
-     const toastHider = ()=>{
-       setToastMassage(false)
-      setTimeout(()=>{
-        setToastMassage(true)
-      },500)
-     }
-
-
-     useEffect(()=>{
-      async function getdata(){
-         let res = await fetch(`https://fakestoreapi.com/products${category}`);
-         let data1 =await res.json()
-         console.log(data1);
-         setdata(data1)
-      }
-      getdata();
-  },[category])
-  const handleCategory =(str)=>{
-    if(str==="all"){
-      setCategory("")   
-    }else{
-      setCategory("//category/"+str)
+  useEffect(() => {
+    async function getdata() {
+      let res = await fetch(`https://dummyjson.com/products${category}`);
+      let data1 = await res.json();
+      console.log(data1.products);
+      setdata(data1.products);
     }
-    console.log(category)
-  }
-
-  const varifyUser = ()=>{
-    console.log("varify called")
-    console.log(signUp)
-    if(signUp.length>0){
-    signUp.map((e)=>{
-      if(login.email === e.email && login.password === e.password){
-        console.log("user variied")
-        setUser(true)
-        setAccesCart(true)
-        setUserData({name: e.fname + " "+e.lname,email:e.email})
-        return;
-      }else{
-        setAccesCart(false)
-        setUser(false);
-      }
-    
-    })
-  }else{
-    setUser(false);
-  }
-  }
+    getdata();
+  }, [category]);
+  const handleCategory = (str) => {
+    if (str === "all") {
+      setCategory("");
+    } else {
+      setCategory("/category/" + str);
+    }
+    console.log(category);
+  };
+  
+useEffect(()=>{
+  let token = localStorage.getItem("token")
+  console.log(token)
+  console.log(signUp)
+  setUser(token)
+},[signUp])
+  const varifyUser = () => {
+    console.log("varify called");
+    console.log(signUp);
+    if (signUp.length > 0) {
+      signUp.map((e) => {
+        if (login.email === e.email && login.password === e.password) {
+          console.log(true);
+          localStorage.setItem("token","true")
+          setUserData({ name: e.fname + " " + e.lname, email: e.email });
+          return;
+        } else {
+          console.log(false);
+          localStorage.setItem("token","false")
+          
+        }
+      });
+    } else {
+      console.log("false2");
+      localStorage.setItem("token","false")
+    }
+  };
   return (
     <>
-      <CartDataContaxt.Provider value={{cartdata,accesCart,setCartData,data,toastHider,handleCategory,setSignUp,signUp,login,setLogin,varifyUser,user}}>
-      <div className="min-h-screen bg-gradient-to-l from-slate-200 bg-slate-200 bg-cover w-full relative backdrop-blur-sm border text-white mx-0">
-        <Navbar  length = {cartdata.length}/>
-        {toastMassage ? <div className='px-3 p-2 w-80 h-10 sticky z-30 left-1 top-[95vh]'></div> : <ToastMassage/>  }
-        <Routes>
-          <Route path="/" element={<Container/>}></Route>
-          <Route path="Cart" element={accesCart ? <Cart/> : <Login/>} />
-          <Route path="Category" element={<Buynow setCartData={setCartData} cartdata={cartdata} data={data} />} />
-          <Route path="About" element={<About/>} />
-          <Route path="account" element={<Signup/>} />
-        </Routes>
-        
-      </div>
+      <CartDataContaxt.Provider
+        value={{
+          cartdata,
+          setCartData,
+          data,
+          toastHider,
+          handleCategory,
+          setSignUp,
+          signUp,
+          login,
+          setLogin,
+          varifyUser,
+          user,
+          search,
+          setdata
+        }}
+      >
+        <div className="min-h-screen bg-gradient-to-l from-slate-200 bg-slate-200 bg-cover w-full relative backdrop-blur-sm border text-white mx-0">
+          <Navbar length={cartdata.length} setSearch={setSearch} />
+          {toastMassage ? (
+            <div className="px-3 p-2 w-80 h-10 sticky z-30 left-1 top-[95vh]"></div>
+          ) : (
+            <ToastMassage />
+          )}
+          <Routes>
+            <Route path="/" element={<Container />}></Route>
+            <Route
+              path="Category"
+              element={
+                <Buynow
+                setCartData={setCartData}
+                cartdata={cartdata}
+                data={data}
+                />
+              }
+            />
+              <Route path="signup" element={<Signup />} />
+              <Route path="login" element={<Login />} />
+              <Route path="About" element={<About />} />
+              <Route path="About" element={<UserCard />} />
+
+            <Route path="private" element={<PrivateRoutes />}>
+              <Route path="Cart" element={ <Cart /> } />
+              <Route path="account" element={user?<Signup />:<UserCard/>} />
+            </Route>
+          </Routes>
+        </div>
       </CartDataContaxt.Provider>
     </>
-  )
+  );
 }
