@@ -1,12 +1,13 @@
 import { useContext, useState } from 'react'
 import { CartDataContaxt } from '../contaxts/CartData'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink,useNavigate } from 'react-router-dom'
 
 
 const Signup = () => {
   const [userData, setUserData] = useState({})
   console.log(userData)
   const { signUp, setSignUp } = useContext(CartDataContaxt)
+  const navigate = useNavigate();
 
   function handleSignup(e) {
     e.preventDefault();
@@ -19,6 +20,8 @@ const Signup = () => {
     console.log(signUp);
     localStorage.setItem("userInfo", JSON.stringify(signUp))
     console.log(localStorage.getItem("userInfo"))
+    alert("Account Created Succesfully")
+    navigate("/login")
   }
 
   return (

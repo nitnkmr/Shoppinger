@@ -18,8 +18,8 @@ const Navbar = ({ length, setSearch }) => {
       </NavLink>
       <NavLink to="/">
         <div className="logo flex font-bold justify-center m-auto md:m-1 rounded-lg">
-         <input type="search" name="search" id="search" className="text-black h-10 mt-4 p-1" onChange={(e)=>setSearch(e.target.value)}/>
-         <input type="submit" value="Search" className="w-16 bg-blue-500 h-10 mt-4" />
+         <input type="search" name="search" id="search" className="text-black h-10 mt-4 p-1 rounded-l-2xl" onChange={(e)=>setSearch(e.target.value)}/>
+         <input type="submit" value="Search" className="w-16 bg-blue-500 h-10 mt-4 rounded-r-2xl" />
         </div>
       </NavLink>
       {/* <div className="logo flex justify-center m-auto md:m-1 p-2 rounded-lg"><input type="search" name="" id="" placeholder='Search' className='rounded-lg p-1 border width-200' /></div> */}
@@ -36,19 +36,20 @@ const Navbar = ({ length, setSearch }) => {
         </li>
         {/* <li className="m-1 md:m-2 hover:text-red-500 hover:font-bold"><NavLink to="/Category">Category</NavLink></li> */}
         <li className="m-1 md:m-2 hover:text-red-500">
-          <NavLink
+          {/* <NavLink
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
             })}
             to="About"
           >
             About
-          </NavLink>
+          </NavLink> */}
         </li>
         <li className="m-1 md:m-2 hover:text-red-500">
           <NavLink
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
+              color :isActive ? "red" : "none",
             })}
             to="private/account"
           >

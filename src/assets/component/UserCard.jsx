@@ -1,6 +1,11 @@
 import React from 'react'
 
-const UserCard = () => {
+const UserCard = ({setUser}) => {
+    const handleLogout=()=>{
+        localStorage.setItem('token',false);
+        alert("User logout succesfully.!");
+        setUser(localStorage.getItem("token"));
+    }
     return (
         <>
             <div className="border w-full h-60 text-black flex justify-center shadow-lg m-1">
@@ -10,7 +15,7 @@ const UserCard = () => {
                 <div className="details border h-full w-1/2 flex flex-col justify-center px-6">
                     <div className="name font-bold">Name : Nitin Kumar</div>
                     <div className="email font-bold"> Email : abx@yhsd</div>
-                    <button className='h-10 bg-red-600 w-1/6 mt-6 rounded text-white'>Log Out</button>
+                    <button className='h-10 bg-red-600 w-1/6 mt-6 rounded text-white' onClick={handleLogout}>Log Out</button>
                 </div>
             </div>
         </>

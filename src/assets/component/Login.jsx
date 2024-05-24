@@ -6,13 +6,14 @@ import { CartDataContaxt } from "../contaxts/CartData";
 function Login() {
   const [userData,setUserData] = useState({})
   const {login,setLogin,varifyUser,user} =useContext(CartDataContaxt)
+  const [validUser, setvalidUser] =useState("true");
 
   const handleLogin =()=>{
     setLogin(userData)
-    console.log(login);
-    console.log(user);
-
     varifyUser();
+    setvalidUser(localStorage.getItem('token'));
+    varifyUser();
+    console.log(validUser, "Valid userr")
   }
   return (
     <>
@@ -38,7 +39,7 @@ function Login() {
               className="p-2  my-2 rounded border border-blue-600"
               onChange={(e) => setUserData({...userData,[e.target.name]:e.target.value})}
             />
-            <span className="text-red-500">{user  ? "" : "**Invalid Credentials**"}</span>
+            <span className="text-red-500">{validUser ==="true"  ? "" : "**Invalid Credentials**"}</span>
             <div className="button flex justify-around">
               <input
                 type="button"
@@ -47,7 +48,7 @@ function Login() {
                 onClick={handleLogin}
               />
 
-             <Link to="../account" className="mt-6 text-md px-6 py-2.5 w-1/3 bg-blue-600 hover:bg-blue-700 shadow-2xl text-white rounded">
+             <Link to="../signup" className="mt-6 text-md px-6 py-2.5 w-1/3 bg-blue-600 hover:bg-blue-700 shadow-2xl text-white rounded">
              <input
                 type="button"
                 value="Sign Up"

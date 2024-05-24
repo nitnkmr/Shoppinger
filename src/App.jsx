@@ -2,7 +2,7 @@ import About from "./assets/component/About";
 import Cart from "./assets/component/Cart";
 import Container from "./assets/component/Container";
 import Navbar from "./assets/component/Navbar";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route,useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Buynow from "./assets/component/Buynow";
 import { CartDataContaxt } from "./assets/contaxts/CartData";
@@ -18,9 +18,10 @@ export default function App() {
   const [login, setLogin] = useState([]);
   const [userData, setUserData] = useState({});
   const [category, setCategory] = useState("");
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false);
   const [toastMassage, setToastMassage] = useState(true);
   const [search, setSearch] = useState("")
+  const navigate = useNavigate();
 
   const toastHider = () => {
     setToastMassage(false);
@@ -55,23 +56,26 @@ useEffect(()=>{
 },[signUp])
   const varifyUser = () => {
     console.log("varify called");
-    console.log(signUp);
     if (signUp.length > 0) {
       signUp.map((e) => {
         if (login.email === e.email && login.password === e.password) {
-          console.log(true);
           localStorage.setItem("token","true")
+          console.log("token is set as true");
           setUserData({ name: e.fname + " " + e.lname, email: e.email });
+          alert("user varified, Moving to Cart.")
+          navigate("/private/cart")
           return;
         } else {
-          console.log(false);
-          localStorage.setItem("token","false")
+          // console.log(false);
+          // localStorage.setItem("token","false")
+          // console.warn("token is set as false");
           
         }
       });
     } else {
       console.log("false2");
       localStorage.setItem("token","false")
+      console.warn("token is set as false2");
     }
   };
   return (
@@ -119,7 +123,7 @@ useEffect(()=>{
 
             <Route path="private" element={<PrivateRoutes />}>
               <Route path="Cart" element={ <Cart /> } />
-              <Route path="account" element={user?<Signup />:<UserCard/>} />
+              <Route path="account" element={user==="false" ?<Signup />:<UserCard setUser={setUser}/>} />
             </Route>
           </Routes>
         </div>
